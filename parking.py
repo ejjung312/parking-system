@@ -21,8 +21,6 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 parking_manager = ParkingManagement(
     model="yolo11n.pt",
     json_file=f"boxes/{filename}_bounding_boxes.json",  # path to parking annotations file
-    classes=['2'],
-
 )
 
 while cap.isOpened():
