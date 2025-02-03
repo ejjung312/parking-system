@@ -1,6 +1,6 @@
 import cv2
 
-filename = "easy1"
+filename = "parking2"
 # Video capture
 cap = cv2.VideoCapture(f"data/{filename}.mp4")
 assert cap.isOpened(), "Error reading video file"
