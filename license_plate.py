@@ -9,7 +9,7 @@ video_path = 'data/parking1.mp4'
 mot_tracker = Sort()
 
 coco_model = YOLO('yolo11n.pt')
-license_plate_detector = YOLO('./model/best.pt')
+license_plate_detector = YOLO('./model/license_plate_best.pt')
 
 vehicles = [2,3,5,7] # car, motorcycle, bus, truck
 
@@ -74,7 +74,11 @@ while True:
             # print(license_plate_text, license_plate_text_score)
 
             if license_plate_text is not None:
-                cv2.rectangle(frame, (int(x1),int(y1)), (int(x2),int(y2)), color=(255,0,0), thickness=3)
+                license_plate_text_score = round(license_plate_text_score * 100)
+
+                if license_plate_text_score >= 50:
+                    cv2.rectangle(frame, (int(x1),int(y1)), (int(x2),int(y2)), color=(255,0,0), thickness=3)
+                    cv2.putText(frame, str(license_plate_text_score), (int(x1),int(y1)+50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
 
             # cv2.imshow('license_plate_crop', license_plate_crop)
 
